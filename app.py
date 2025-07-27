@@ -71,7 +71,7 @@ def train_regression(df):
         # no gridsearch since small set
         pipe.fit(X, y)
         preds = pipe.predict(X)
-        rmse = mean_squared_error(y, preds, squared=False)
+        rmse = mean_squared_error(y, preds) ** 0.5
         if rmse < best_rmse:
             best_rmse, best_name, best_pipe = rmse, name, pipe
     # final fit
