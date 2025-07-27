@@ -53,9 +53,9 @@ def train_model(df):
         ("cat", OneHotEncoder(handle_unknown="ignore"), cat)
     ])
     models = {
-        "RF": RandomForestRegressor(150, random_state=42),
-        "GB": GradientBoostingRegressor(200, learning_rate=0.1, random_state=42),
-    }
+    "RF": RandomForestRegressor(n_estimators=150, random_state=42),
+    "GB": GradientBoostingRegressor(n_estimators=200, learning_rate=0.1, random_state=42),
+}
     best_rmse, best_pipe = np.inf, None
     for m in models.values():
         pipe = Pipeline([("prep", prep),("reg", m)])
